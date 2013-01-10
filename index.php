@@ -15,7 +15,9 @@ foreach($obj->Messages as $messages) {
   foreach ($messages as $datum) {
     $tripstop->{$datum->Key} = $datum->Value;
   }
-  $direction = ($tripstop->Trip % 2) ? 'outbound' : 'inbound';
+  
+  $trip_as_int = (int)substr($tripstop->Trip, 1);
+  $direction = ($trip_as_int % 2) ? 'outbound' : 'inbound';
   $merid = date('a');
   
   if ($tripstop->Stop == DESIRED_STOP && (($merid == 'am' && $direction == AM_DIRECTION) || ($merid = 'pm' && $direction != AM_DIRECTION))) {
