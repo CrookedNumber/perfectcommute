@@ -1,7 +1,8 @@
 <?php
 define('URL', 'http://developer.mbta.com/lib/RTCR/RailLine_8.json');
 define('TIMEZONE', 'America/New_York');
-define('DESIRED_STOP', 'West Newton');
+define('AM_DEPARTURE', 'West Newton');
+define('PM_DEPARTURE', 'South Station');
 define('AM_DIRECTION', 'inbound');
 
 date_default_timezone_set(TIMEZONE);
@@ -20,7 +21,7 @@ foreach($obj->Messages as $messages) {
   $direction = ($trip_as_int % 2) ? 'outbound' : 'inbound';
   $merid = date('a');
   
-  if ($tripstop->Stop == DESIRED_STOP && (($merid == 'am' && $direction == AM_DIRECTION) || ($merid = 'pm' && $direction != AM_DIRECTION))) {
+  if (($tripstop->Stop == AM_DEPARTURE && $merid == 'am' && $direction == AM_DIRECTION) || ($tripstop->Stop == PM_DEPARTURE && $merid = 'pm' && $direction != AM_DIRECTION)) {
     $s  = "<p>Train: $tripstop->Trip</p>";	
     $s .= "<p>Stop: $tripstop->Stop</p>";    
     $s .= "<p>Scheduled: " . date('h:i a', $tripstop->Scheduled) . "</p>";
