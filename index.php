@@ -38,17 +38,17 @@ foreach($obj->Messages as $messages) {
   // Filter out any irrelevant stops
   // i.e., trains headed counter to your commute
   if ($trip_to || $trip_from) {
-    $s  = "<p>Train: $tripstop->Trip</p>";	
-    $s .= "<p>Stop: $tripstop->Stop</p>";    
-    $s .= "<p>Scheduled: " . date('h:i a', $tripstop->Scheduled) . "</p>";
+    $trip_info  = "<p>Train: $tripstop->Trip</p>";	
+    $trip_info .= "<p>Stop: $tripstop->Stop</p>";    
+    $trip_info .= "<p>Scheduled: " . date('h:i a', $tripstop->Scheduled) . "</p>";
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
     $emph = ($tripstop->Lateness) ? ' style="font-weight: bold;"' : '' ; 
     $expected = "Expected: " . date('h:i a', $tripstop->Scheduled+$tripstop->Lateness);
-    $s .= "<p" . $emph . ">" . $expected . "</p>";
-    $s .= "<p>Speed: $tripstop->Speed</p>";
+    $trip_info .= "<p" . $emph . ">" . $expected . "</p>";
+    $trip_info .= "<p>Speed: $tripstop->Speed</p>";
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
-    $s .= "<p>Lateness: $lateness</p>";
-    $trips[$tripstop->Trip][] = $s;
+    $trip_info .= "<p>Lateness: $lateness</p>";
+    $trips[$tripstop->Trip][] = $trip_info;
   }
 }
 ?>
