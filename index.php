@@ -43,7 +43,7 @@ foreach($obj->Messages as $messages) {
     $trip_info .= "<p>Scheduled: " . date('h:i a', $tripstop->Scheduled) . "</p>";
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
     $emph = ($tripstop->Lateness) ? ' style="font-weight: bold;"' : '' ; 
-    $expected = "Expected: " . date('h:i a', $tripstop->Scheduled+$tripstop->Lateness);
+    $expected = "Expected: " . date('h:i a', $tripstop->Scheduled + $tripstop->Lateness);
     $trip_info .= "<p" . $emph . ">" . $expected . "</p>";
     $trip_info .= "<p>Speed: $tripstop->Speed</p>";
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
@@ -57,7 +57,7 @@ foreach($obj->Messages as $messages) {
 </head>
 <body>
 <?php
-foreach ($trips as $k=>$v) {
+foreach ($trips as $k => $v) {
   foreach ($v as $vv) {
     print $vv;
   }
