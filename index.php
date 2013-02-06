@@ -1,4 +1,8 @@
 <?php
+// These values can all be changed and the code forked
+// TO accomodate your particular commute
+// @TODO: provide a UI and cookied info
+// @TODO: make the line configurable (hardcoded to Framingham[8])
 define('URL', 'http://developer.mbta.com/lib/RTCR/RailLine_8.json');
 define('TIMEZONE', 'America/New_York');
 define('AM_DEPARTURE', 'West Newton');
@@ -13,12 +17,19 @@ $trips = array();
 
 foreach($obj->Messages as $messages) {
   $tripstop = new stdClass();
+  // Turn messages into more commonsense objects
   foreach ($messages as $datum) {
     $tripstop->{$datum->Key} = $datum->Value;
   }
   
+  // Trip comes as string, prefixed with a 'P'
+  // (Though the cast is probably unnecessary)
   $trip_as_int = (int)substr($tripstop->Trip, 1);
+  
+  // Outbound trip numbers are odd; inbound are even.
   $direction = ($trip_as_int % 2) ? 'outbound' : 'inbound';
+  
+  // Is it AM or PM?
   $merid = date('a');
   
   if (($tripstop->Stop == AM_DEPARTURE && $merid == 'am' && $direction == AM_DIRECTION) || ($tripstop->Stop == PM_DEPARTURE && $merid = 'pm' && $direction != AM_DIRECTION)) {
