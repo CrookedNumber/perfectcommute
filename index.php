@@ -45,7 +45,7 @@ foreach ($trips as $k=>$v) {
   foreach ($v as $vv) {
     print $vv;
   }
-  print "<p>--------------------------</p>";
+  print "<hr>";
 }
 ?>
 </body>
