@@ -32,7 +32,10 @@ foreach($obj->Messages as $messages) {
   // Is it AM or PM?
   $merid = date('a');
   
-  if (($tripstop->Stop == AM_DEPARTURE && $merid == 'am' && $direction == AM_DIRECTION) || ($tripstop->Stop == PM_DEPARTURE && $merid = 'pm' && $direction != AM_DIRECTION)) {
+  $trip_to = ($tripstop->Stop == AM_DEPARTURE && $merid == 'am' && $direction == AM_DIRECTION);
+  $trip_from = ($tripstop->Stop == PM_DEPARTURE && $merid = 'pm' && $direction != AM_DIRECTION);
+  
+  if ($trip_to || $trip_from) {
     $s  = "<p>Train: $tripstop->Trip</p>";	
     $s .= "<p>Stop: $tripstop->Stop</p>";    
     $s .= "<p>Scheduled: " . date('h:i a', $tripstop->Scheduled) . "</p>";
