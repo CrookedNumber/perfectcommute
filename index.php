@@ -33,7 +33,7 @@ foreach($obj->Messages as $messages) {
   $merid = date('a');
   
   $trip_to = ($tripstop->Stop == AM_DEPARTURE && $merid == 'am' && $direction == AM_DIRECTION);
-  $trip_from = ($tripstop->Stop == PM_DEPARTURE && $merid = 'pm' && $direction != AM_DIRECTION);
+  $trip_from = ($tripstop->Stop == PM_DEPARTURE && $merid == 'pm' && $direction != AM_DIRECTION);
 
   // Filter out any irrelevant stops
   // i.e., trains headed counter to your commute
