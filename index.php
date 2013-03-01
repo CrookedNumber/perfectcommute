@@ -38,7 +38,7 @@ foreach($obj->Messages as $messages) {
   // Filter out any irrelevant stops
   // i.e., trains headed counter to your commute
   if ($trip_to || $trip_from) {
-    $trip_info  = '<p style="font-size: 60px;"><strong>'. date('g:i', $tripstop->Scheduled) . '</strong> will leave ';	
+    $trip_info  = '<p style="font-size: 40px;"><strong>'. date('g:i', $tripstop->Scheduled) . '</strong> will leave ';	
     $trip_info .= "$tripstop->Stop at ";    
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
     $label = ($lateness > 1) ? 'minutes' : 'minute';
