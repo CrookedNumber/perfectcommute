@@ -47,7 +47,9 @@ foreach($obj->Messages as $messages) {
     if ($lateness) {
       $trip_info .= ' <strong>[' . $lateness. ' ' . $label . ' late]</strong>';    
     }
-    $trip_info .= " Speed: $tripstop->Speed</p>";
+    if ($tripstop->Speed) {
+      $trip_info .= " Speed: $tripstop->Speed</p>";
+    }
     $trips[$tripstop->Trip][] = $trip_info;
   }
 }
