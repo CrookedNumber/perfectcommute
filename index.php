@@ -63,12 +63,16 @@ foreach($relevant_trips as $tripstop) {
     $trip_info .= '</p>';
     
     $prev = $i - 1;
-    if ($prev > 0) {
-      $trip_info .= '<a class="prev" href="#page-' . $prev .'">PREV</a> | ';  
-    }
-    
     $next = $i + 1;
-    if ($next < count($relevant_trips)) {
+    $first = $prev <= 0;
+    $last = $next >= count($relevant_trips);
+    if (!$first) {
+      $trip_info .= '<a class="prev" href="#page-' . $prev .'">PREV</a>';
+    }
+    if (!$first && !$last) {
+      $trip_info .= ' | ';   
+    }
+    if (!$last) {
       $trip_info .= '<a class="next" href="#page-' . $next .'">NEXT</a>';
     }
     $trip_info .= '</div></div>';
