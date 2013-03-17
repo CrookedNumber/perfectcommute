@@ -51,8 +51,9 @@ foreach($obj->Messages as $messages) {
       $trip_info .= ' <strong>[' . $lateness. ' ' . $label . ' late]</strong>';    
     }
     if ($tripstop->Speed) {
-      $trip_info .= " Speed: $tripstop->Speed</p>";
+      $trip_info .= " Speed: $tripstop->Speed";
     }
+    $trip_info .= '</p>';
     $j = $i + 1;
     $trip_info .= '<a href="#page-' . $j .'">NEXT</a></div></div>';
     $trips[$tripstop->Trip][] = $trip_info;
