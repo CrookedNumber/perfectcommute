@@ -44,7 +44,8 @@ foreach($obj->Messages as $messages) {
     $relvant_trips[] = $tripstop;
   }
 }
-$i = 0;
+
+$i = 1;
 foreach($relvant_trips as $tripstop) {
     $trip_info = '<div data-role="page" id="page-' . $i . '"><div data-role="content">';
     $trip_info  .= '<p style="font-size: 40px;" class="trip"><strong>'. date('g:i', $tripstop->Scheduled) . '</strong> will leave ';	
@@ -61,7 +62,9 @@ foreach($relvant_trips as $tripstop) {
     }
     $trip_info .= '</p>';
     $j = $i + 1;
-
+    if ($j > count($relvant_trips)) {
+      $j = 1;
+    }
     $trip_info .= '<a href="#page-' . $j .'">NEXT</a></div></div>';
     $trips[$tripstop->Trip][] = $trip_info;
     $i++;
