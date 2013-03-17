@@ -89,11 +89,11 @@ foreach($relevant_trips as $tripstop) {
   $(document).ready(function() {
     $(".page").swiperight(function() {
       var prev = $(this).find('.prev').attr('href');
-      $.mobile.changePage(prev);
+      $.mobile.changePage(prev, {transition: "slide", reverse: "true"});
     });
     $(".page").swipeleft(function() {
       var next = $(this).find('.next').attr('href');
-      $.mobile.changePage(next);
+      $.mobile.changePage(next, {transition: "slide"});
     });
   });
 </script>
