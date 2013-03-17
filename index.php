@@ -47,7 +47,7 @@ foreach($obj->Messages as $messages) {
 
 $i = 1;
 foreach($relevant_trips as $tripstop) {
-    $trip_info = '<div data-role="page" id="page-' . $i . '"><div data-role="content">';
+    $trip_info = '<div class="page" data-role="page" id="page-' . $i . '"><div data-role="content">';
     $trip_info  .= '<p style="font-size: 40px;" class="trip"><strong>'. date('g:i', $tripstop->Scheduled) . '</strong> will leave ';	
     $trip_info .= "$tripstop->Stop at ";    
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
@@ -86,7 +86,16 @@ foreach($relevant_trips as $tripstop) {
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 <script>
-
+  $(document).ready(function() {
+    $(".page").swiperight(function() {
+      var prev = $(this).find('.prev').attr('href');
+      $.mobile.changePage(prev);
+    });
+    $(".page").swipeleft(function() {
+      var next = $(this).find('.next').attr('href');
+      $.mobile.changePage(next);
+    });
+  });
 </script>
 </head>
 <body>
