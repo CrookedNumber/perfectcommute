@@ -15,7 +15,7 @@ $obj = json_decode($json);
 
 $trips = array();
 
-$relvant_trips =array();
+$relevant_trips =array();
 
 foreach($obj->Messages as $messages) {
   $tripstop = new stdClass();
@@ -41,12 +41,12 @@ foreach($obj->Messages as $messages) {
   // i.e., trains headed counter to your commute
 
   if ($trip_to || $trip_from) {
-    $relvant_trips[] = $tripstop;
+    $relevant_trips[] = $tripstop;
   }
 }
 
 $i = 1;
-foreach($relvant_trips as $tripstop) {
+foreach($relevant_trips as $tripstop) {
     $trip_info = '<div data-role="page" id="page-' . $i . '"><div data-role="content">';
     $trip_info  .= '<p style="font-size: 40px;" class="trip"><strong>'. date('g:i', $tripstop->Scheduled) . '</strong> will leave ';	
     $trip_info .= "$tripstop->Stop at ";    
@@ -62,7 +62,7 @@ foreach($relvant_trips as $tripstop) {
     }
     $trip_info .= '</p>';
     $j = $i + 1;
-    if ($j > count($relvant_trips)) {
+    if ($j > count($relevant_trips)) {
       $j = 1;
     }
     $trip_info .= '<a href="#page-' . $j .'">NEXT</a></div></div>';
