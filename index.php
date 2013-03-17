@@ -48,8 +48,8 @@ foreach($obj->Messages as $messages) {
 $i = 1;
 foreach($relevant_trips as $tripstop) {
     $trip_info = '<div class="page" data-role="page" id="page-' . $i . '"><div data-role="content">';
-    $trip_info  .= '<p class="trip">'. date('g:i', $tripstop->Scheduled) . ' will leave in';	
-    $trip_info .= "$tripstop->Stop at ";    
+    $trip_info  .= '<p class="trip">'. date('g:i', $tripstop->Scheduled) . ' will leave ';	
+    $trip_info .= "$tripstop->Stop in "; 
     $lateness = ($tripstop->Lateness) ? $tripstop->Lateness/60 : 0;
     $label = ($lateness > 1) ? 'minutes' : 'minute';
     //$expected = date('g:ia', $tripstop->Scheduled + $tripstop->Lateness);
