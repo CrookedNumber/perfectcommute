@@ -61,11 +61,11 @@ foreach($relevant_trips as $tripstop) {
       $trip_info .= " Speed: $tripstop->Speed";
     }
     $trip_info .= '</p>';
-    $j = $i + 1;
-    if ($j > count($relevant_trips)) {
-      $j = 1;
+    $next = $i + 1;
+    if ($next > count($relevant_trips)) {
+      $next = 1;
     }
-    $trip_info .= '<a class="next" href="#page-' . $j .'">NEXT</a></div></div>';
+    $trip_info .= '<a class="next" href="#page-' . $next .'">NEXT</a></div></div>';
     $trips[$tripstop->Trip][] = $trip_info;
     $i++;
 }
