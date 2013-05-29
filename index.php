@@ -17,12 +17,7 @@ $trips = array();
 
 $relevant_trips =array();
 
-foreach($obj->Messages as $messages) {
-  $tripstop = new stdClass();
-  // Turn messages into more commonsense objects
-  foreach ($messages as $datum) {
-    $tripstop->{$datum->Key} = $datum->Value;
-  }
+foreach($obj->Messages as $tripstop) {
   
   // Trip comes as string, prefixed with a 'P'
   // (Though the cast is probably unnecessary)
