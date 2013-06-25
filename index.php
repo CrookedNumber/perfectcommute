@@ -3,6 +3,8 @@
 // TO accomodate your particular commute
 // @TODO: provide a UI and cookied info
 // @TODO: make the line configurable (hardcoded to Framingham[8])
+// @TODO: cache API results
+// @TODO: sort relevant trips by time
 define('URL', 'http://developer.mbta.com/lib/RTCR/RailLine_8.json');
 define('TIMEZONE', 'America/New_York');
 define('AM_DEPARTURE', 'West Newton');
